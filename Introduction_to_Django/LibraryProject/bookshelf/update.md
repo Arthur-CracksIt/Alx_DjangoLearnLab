@@ -1,0 +1,1 @@
+new_book = Book.objects.get(title = '1984'); new_book.title = 'Nineteen Eighty-Four'; new_book.save()
