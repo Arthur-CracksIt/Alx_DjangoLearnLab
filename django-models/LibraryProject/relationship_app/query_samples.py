@@ -17,9 +17,7 @@ books = Book.objects.filter(author=author)
 print(f"Books by {author_name}:", list(books))
 
 #Get Librarian for a Library
-library = 'Kofi'
+library_name = 'Kofi'
+library = Library.objects.get(name=library_name)
 librarian = Librarian.objects.get(library = library)
-# library = librarian.library.all()
-# print(f"Library for {librarian_name}:" )
-# for lib in library:
-#     print(lib.name)
+print(f"Library for {library_name}: {librarian.name}")
