@@ -1,4 +1,4 @@
-from relationship_app.models import Book, Library, Author
+from relationship_app.models import Book, Library, Author, Librarian
 #Get all books
 book = Book.objects.all()
 
@@ -15,3 +15,11 @@ author_name = 'David'
 author = Author.objects.get(name=author_name)
 books = Book.objects.filter(author=author)
 print(f"Books by {author_name}:", list(books))
+
+#Get Librarian for a Library
+librarian_name = 'Kofi'
+librarian = Librarian.objects.get(name = librarian_name)
+library = librarian.library.all()
+print(f"Library for {librarian_name}:" )
+for lib in library:
+    print(lib.name)
