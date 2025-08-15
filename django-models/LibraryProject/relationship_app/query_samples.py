@@ -14,3 +14,4 @@ for book in books:
 author_name = 'David'
 author_chek = Author.objects.get(name = author_name)
 books = Book.objects.filter(author= author_chek)
+print(f"Books by {author_name}:", list(books))
