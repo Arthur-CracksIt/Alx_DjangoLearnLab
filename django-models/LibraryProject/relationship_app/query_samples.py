@@ -20,4 +20,4 @@ print(f"Books by {author_name}:", list(books))
 library_name = 'Kofi'
 library = Library.objects.get(name=library_name)
 librarian = Librarian.objects.get(library = library)
-print(f"Library for {library_name}: {librarian.name}")
+print(f"Library for {library.name}: ", librarian.name)
