@@ -12,6 +12,6 @@ for book in books:
 
 #Get book by author
 author_name = 'David'
-author = Author.objects.get(name = author_name)
-books = Book.objects.filter(author= author)
+author = Author.objects.get(name=author_name)
+books = Book.objects.filter(author=author)
 print(f"Books by {author_name}:", list(books))
