@@ -35,3 +35,13 @@ def admin_view(request):
     if hasattr(request.user, 'User') and request.user.User.role == 'Admin':
         return HttpResponse("Welcome, Admin")
     return HttpResponse("Access denied.", status=403)
+
+def librarian_view(request):
+    if hasattr(request.user, 'User') and request.user.User.role == 'Librarian':
+        return HttpResponse("Welcome, Libraria")
+    return HttpResponse("Access denied.", status=403)
+
+def member_view(request):
+    if hasattr(request.user, 'User') and request.user.User.role == 'Member':
+        return HttpResponse("Welcome, Member")
+    return HttpResponse("Access denied.", status=403)
