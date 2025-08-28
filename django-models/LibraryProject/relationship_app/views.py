@@ -26,3 +26,12 @@ class Register(CreateView):
         user = form.save()
         login(self.request, user)
         return response
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from .models import UserProfile
+
+@login_required
+def admin_view(request):
+    if hasattr(request.user, 'User') and request.user.User.role == 'Admin':
+        return HttpResponse("Welcome, Admin")
+    return HttpResponse("Access denied.", status=403)
