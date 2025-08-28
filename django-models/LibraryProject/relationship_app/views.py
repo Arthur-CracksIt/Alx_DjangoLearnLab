@@ -26,22 +26,19 @@ class Register(CreateView):
         user = form.save()
         login(self.request, user)
         return response
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import render
 from .models import UserProfile
 
-@login_required
+@user_passes_test
 def admin_view(request):
     if hasattr(request.user, 'User') and request.user.User.role == 'Admin':
-        return HttpResponse("Welcome, Admin")
-    return HttpResponse("Access denied.", status=403)
+        return render(request, 'templates/relationship_app/admin_view.html')
 
 def librarian_view(request):
     if hasattr(request.user, 'User') and request.user.User.role == 'Librarian':
-        return HttpResponse("Welcome, Libraria")
-    return HttpResponse("Access denied.", status=403)
+       return render(request, 'templates/relationship_app/librarian_view.html')
 
 def member_view(request):
     if hasattr(request.user, 'User') and request.user.User.role == 'Member':
-        return HttpResponse("Welcome, Member")
-    return HttpResponse("Access denied.", status=403)
+       return render(request, 'templates/relationship_app/member_view.html')
