@@ -47,3 +47,8 @@ def member_view(request):
 def can_add_book(request):
     new_book = Book.objects.create(title = '1984', author = 'George Orwell', publication_year = 1949)
     return render(request, 'templates/relationship_app/add_book.html', {'book': new_book})
+
+@permission_required('templates/relationship_app.can_change_book', raise_exception=True)
+def can_change_book(request, title):
+    new_book = Book.objects.get(title = title)
+    return render(request, 'templates/relationship_app/change_book.html', {'book': new_book})
