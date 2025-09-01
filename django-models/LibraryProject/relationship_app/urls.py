@@ -13,5 +13,5 @@ urlpatterns = [
     path('member/', member_view, name='member_view'),
     path('add_book/', can_add_book, name='add_book'),
     path('edit_book/', can_change_book, name='edit_book'),
-    path('delete_book/', can_delete_book, name='add_book'),
+    path('delete_book/', can_delete_book, name='delete_book'),
 ]
