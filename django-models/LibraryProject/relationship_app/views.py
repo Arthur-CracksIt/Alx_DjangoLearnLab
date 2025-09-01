@@ -26,7 +26,7 @@ class Register(CreateView):
         user = form.save()
         login(self.request, user)
         return response
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, permission_required
 from django.shortcuts import render
 from .models import UserProfile
 
@@ -42,3 +42,8 @@ def librarian_view(request):
 def member_view(request):
     if hasattr(request.user, 'User') and request.user.User.role == 'Member':
        return render(request, 'templates/relationship_app/member_view.html')
+    
+@permission_required('templates/relationship_app.Can_add_book', raise_exception=True)
+def can_add_book(request):
+    new_book = Book.objects.create(title = '1984', author = 'George Orwell', publication_year = 1949)
+    return render(request, 'templates/relationship_app/add_book.html', {'book': new_book})
