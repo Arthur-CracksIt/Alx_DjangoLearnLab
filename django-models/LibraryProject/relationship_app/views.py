@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required
 from .models import Book
 # Create your views here.
 def list_books(request):
@@ -43,8 +44,6 @@ def member_view(request):
     if hasattr(request.user, 'User') and request.user.User.role == 'Member':
        return render(request, 'templates/relationship_app/member_view.html')
 
-from django.contrib.auth.decorators import user_passes_test, permission_required
-from django.shortcuts import render
 @permission_required('templates/relationship_app.can_add_book', raise_exception=True)
 def can_add_book(request):
     new_book = Book.objects.create(title = '1984', author = 'George Orwell', publication_year = 1949)
