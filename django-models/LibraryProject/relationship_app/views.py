@@ -43,7 +43,7 @@ def member_view(request):
     if hasattr(request.user, 'User') and request.user.User.role == 'Member':
        return render(request, 'templates/relationship_app/member_view.html')
     
-@permission_required('templates/relationship_app.Can_add_book', raise_exception=True)
+@permission_required('templates/relationship_app.can_add_book', raise_exception=True)
 def can_add_book(request):
     new_book = Book.objects.create(title = '1984', author = 'George Orwell', publication_year = 1949)
     return render(request, 'templates/relationship_app/add_book.html', {'book': new_book})
