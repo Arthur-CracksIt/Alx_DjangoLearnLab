@@ -7,7 +7,7 @@ class Book(models.Model):
     publication_year = models.IntegerField()
 
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,BaseUserManager
 
 class CustomUser(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
@@ -15,3 +15,10 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return super().__str__()
+class CustomUserManager(BaseUserManager):
+    def create_user():
+        new_user = CustomUser.objects.create()
+        return new_user
+    def create_superuser():
+        super_user = CustomUser.objects.create()
+        return super_user
