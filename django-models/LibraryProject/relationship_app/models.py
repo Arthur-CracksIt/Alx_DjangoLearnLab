@@ -50,10 +50,10 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+
 class CustomUser(AbstractUser):
-    user = models.OneToOneField(AbstractUser, models.CASCADE, related_name='CustomUser')
-    date_of_birth = models.DateField()
-    profile_photo = models.ImageField()
+    date_of_birth = models.DateField(null=True, blank=True)
+    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
 
     def __str__(self):
         return super().__str__()
