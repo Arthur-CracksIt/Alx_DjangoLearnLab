@@ -48,4 +48,12 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user = instance)
 
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+class CustomUser(AbstractUser):
+    user = models.OneToOneField(AbstractUser, models.CASCADE, related_name='CustomUser')
+    date_of_birth = models.DateField()
+    profile_photo = models.ImageField()
 
+    def __str__(self):
+        return super().__str__()
