@@ -7,6 +7,6 @@ class BookAdmin(admin.ModelAdmin): #customizing the admin
     search_fields = ('title', 'publication_year')
 admin.site.register(Book, BookAdmin)
 
-class CustomeUserAdmin(admin.ModelAdmin):
+class CustomUserAdmin(admin.ModelAdmin):
     user_display = ('profile_photo', 'date_of_birth')
-admin.site.register(CustomUser, CustomeUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
