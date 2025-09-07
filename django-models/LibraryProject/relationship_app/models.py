@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -47,3 +47,9 @@ class UserProfile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user = instance)
+
+# class CustomUser(AbstractUser):
+#     # user = models.OneToOneField(AbstractUser, on_delete=models.CASCADE, related_name='User')
+#     date_of_birth = models.DateField()
+#     profile_photo = models.ImageField()
+
