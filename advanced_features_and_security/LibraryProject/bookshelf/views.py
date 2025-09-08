@@ -15,8 +15,8 @@ def can_edit(request):
     edit_role= UserPermissions.objects.create(role= 'Editor')
     return render(request, 'relationship_app/editors.html', {'user': edit_role})
 
-@permission_required('bookshelf.can_view', raise_exception=True)
-def can_view(request):
+@permission_required('bookshelf.can_delete', raise_exception=True)
+def can_delete(request):
     view_role= UserPermissions.objects.create(role= 'Viewer')
     return render(request, 'relationship_app/viewer.html', {'user': view_role})
 
