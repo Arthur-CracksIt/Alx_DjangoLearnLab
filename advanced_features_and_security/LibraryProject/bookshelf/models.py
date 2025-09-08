@@ -22,3 +22,15 @@ class CustomUserManager(BaseUserManager):
     def create_superuser():
         super_user = CustomUser.objects.create()
         return super_user
+
+class UserPermissions(models.Model):
+    name = models.CharField(max_length = 200)
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        permissions = [
+            ('Can_edit', 'can_create', 'can_edit'),
+            ('can_view', 'Can_view'),
+            ('Can_delete', 'can_delete'),
+        ]
