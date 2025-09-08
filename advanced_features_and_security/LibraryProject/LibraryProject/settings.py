@@ -25,6 +25,13 @@ SECRET_KEY = 'django-insecure-=v#bf0^o--&so1+66eh7)0rk5s%^zdj(u3h&#e@89w3oc@nb^n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+#SECURING DJANGO APPLICATION
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = True
+SECURE_CONTENT_TYPE_NOSNIFF  = True
+CSRF_COOKIE_SECURE  = True
+SESSION_COOKIE_SECURE = TRUE
+
 ALLOWED_HOSTS = []
 
 #Login Redirected URLS
