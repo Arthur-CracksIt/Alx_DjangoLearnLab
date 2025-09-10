@@ -11,6 +11,11 @@ class SignUpView(CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
+class FormView(ExampleForm):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "/LibraryProject/bookshelf/form_example.html"
+
 @permission_required('bookshelf.can_edit', raise_exception=True)
 def can_edit(request):
     edit_role= UserPermissions.objects.create(name= 'Editor')
