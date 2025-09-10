@@ -31,9 +31,15 @@ X_FRAME_OPTIONS = True
 SECURE_CONTENT_TYPE_NOSNIFF  = True
 CSRF_COOKIE_SECURE  = True
 SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS =31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS  = SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True #redirect all non-HTTPS requests to HTTPS.
+SECURE_HSTS_SECONDS =31536000 #instruct browsers to only access the site via HTTPS for the specified time.
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = SECURE_HSTS_PRELOAD = True # include all subdomains in the HSTS policy and to allow preloading.
+SESSION_COOKIE_SECURE = True #ensure session cookies are only transmitted over HTTPS.
+CSRF_COOKIE_SECURE = True #ensure CSRF cookies are only transmitted over HTTPS
+X_FRAME_OPTIONS = "DENY" #prevent your site from being framed and protect against clickjacking.
+SECURE_CONTENT_TYPE_NOSNIFF = True #prevent browsers from MIME-sniffing a response away from the declared content-type.
+SECURE_BROWSER_XSS_FILTER = True  #enable the browser’s XSS filtering and help prevent cross-site scripting attacks.
+
 
 ALLOWED_HOSTS = []
 
