@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import permission_required
 from django.urls import reverse_lazy
 from .models import UserPermissions
 from django.views.generic import CreateView
+from .forms import ExampleForm
 # Create your views here.
 class SignUpView(CreateView):
     form_class = UserCreationForm
@@ -34,4 +35,6 @@ from .models import Book
 def book_list(request):
     books = Book.objects.all()
     return render(request, 'bookshelf/book_list.html', {'books': books})
+
+
 
