@@ -1,10 +1,17 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required
 from .models import Book
+from .serializer import BookSerializer
+from rest_framework import generics
 # Create your views here.
 def list_books(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
+
+#create serializer view
+class BookSerialzerView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
 
 from django.views.generic.detail import DetailView
 from .models import Library
