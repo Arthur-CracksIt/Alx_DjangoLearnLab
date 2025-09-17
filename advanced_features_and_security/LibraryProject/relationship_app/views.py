@@ -9,7 +9,7 @@ def list_books(request):
     return render(request, 'relationship_app/list_books.html', {'books': books})
 
 #create serializer view
-class BookSerialzerView(generics.ListCreateAPIView):
+class BookSerializerView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 

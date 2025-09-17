@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import list_books, LibraryDetailView, Register, admin_view, librarian_view, member_view, can_add_book, can_change_book, can_delete_book
 from django.contrib.auth.views import LoginView,LogoutView
+from .views import BookSerializerView
 
 urlpatterns = [
     path('books/',list_books, name= 'ListBooks'),
@@ -14,4 +15,5 @@ urlpatterns = [
     path('add_book/', can_add_book, name='add_book'),
     path('edit_book/', can_change_book, name='edit_book'),
     path('delete_book/', can_delete_book, name='delete_book'),
+    path('api/books', views.BookSerializerView.as_view(), name = "book_list_create")
 ]
